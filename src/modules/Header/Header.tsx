@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { Button } from "@mui/material";
 import { AuthInfo } from "@/components/AuthInfo/AuthInfo";
@@ -7,7 +8,9 @@ import styles from "./styles.module.css";
 import { Modal } from "@/modules/Modal/Modal";
 
 export default function Header() {
-	const { userId, setIsAuth } = useAuthStore();
+	const { userId } = useAuthStore();
+	const [showModal, setShowModal] = useState(false);
+
 	return (
 		<header className={styles.header}>
 			<div className={`container ${styles.container}`}>
@@ -20,7 +23,7 @@ export default function Header() {
 							variant="outlined"
 							size="small"
 							onClick={() => {
-								setIsAuth(0);
+								setShowModal(true);
 							}}
 						>
 							Вход
@@ -28,7 +31,7 @@ export default function Header() {
 					)}
 				</div>
 			</div>
-			<Modal></Modal>
+			{showModal && <Modal closeWindow={setShowModal}></Modal>}
 		</header>
 	);
 }

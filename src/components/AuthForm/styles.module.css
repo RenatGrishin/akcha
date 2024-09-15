@@ -1,0 +1,8 @@
+.form {
+	display: grid;
+	gap: 12px;
+	padding: 32px;
+	background-color: white;
+	border-radius: 12px;
+	border: 1px solid lightgrey;
+}

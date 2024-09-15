@@ -8,6 +8,7 @@ interface IUsers {
 interface IUserStore {
 	users: IUsers[];
 	getUserById: (id: number | false) => IUsers | undefined;
+	getUserByLogin: (id: string) => IUsers | undefined;
 }
 
 export const usersStore = create<IUserStore>((set, get) => ({
@@ -26,4 +27,5 @@ export const usersStore = create<IUserStore>((set, get) => ({
 		},
 	],
 	getUserById: (id) => get().users.find((user) => user.id === id),
+	getUserByLogin: (login) => get().users.find((user) => user.login === login),
 }));
